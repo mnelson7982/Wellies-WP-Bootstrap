@@ -171,7 +171,8 @@
 	<div class="navbar-inner">
 		<div class="container">
 	        <ul class="nav">
-	        	<?php 
+	        	<!--Get the Network Site Title-->
+	        		<?php 
 	        		switch_to_blog(1);
 					$root_site = get_current_site();
 					echo '<a class="site brand" id="logo" href="'.$root_site->path.'">'.$root_site->site_name.'</a>'; //Echo Parent Site Name
@@ -181,10 +182,13 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						 <li class="divider">Site Pages</li>
-						 <?php $connected = p2p_type( 'sections_to_page' )->get_connected( get_queried_object_id() ); ?>
-						 <?php p2p_list_posts( $connected, 'before_list=&after_list=' ); ?>
-					
-						  <?php wp_list_pages($networksite_links);//List out all pages except Front Page	?>
+						 <?php
+						 	 //Get all Page Sections Associated with the Current Page (Should add if statement to look for PageTemplate)
+						 	 $connected = p2p_type( 'sections_to_page' )->get_connected( get_queried_object_id() ); 
+						 	 p2p_list_posts( $connected, 'before_list=&after_list=' ); 
+						 	//Get All pages on the Current Site
+						 	 wp_list_pages($networksite_links);
+						 ?>
 						 
 						 <li class="divider">Other Sites</li> 
 						 <?php $network_menu = wp_list_sites();if( $network_menu ):echo $network_menu;endif; //List out all Sites in Network?>
