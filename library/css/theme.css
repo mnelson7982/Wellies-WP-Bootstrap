@@ -1,0 +1,102 @@
+.page-header {
+margin: 45px 0 18px;
+border-bottom: 1px solid #eee;
+}
+.page-header h1 {
+margin-bottom: 17px;
+line-height: 1;
+}
+
+section{padding-top: 60px;}
+/***Top Navigation Bar Styling***/
+	/*Logged In State*/
+		a.logged-in {
+			float: left;
+			display:block;
+			line-height: 40px;
+		}
+		a.logged-in > img{
+			padding: 0 .25em;
+			width: 16px;
+			height: 16px;
+			vertical-align:text-bottom;
+			
+		}
+		a.logged-in:hover{
+			background: #0069D6;
+		}
+		a.logged-in + a.logged-in {
+			margin-right: .5em;
+		}
+		
+/***One Page Custom Template***/
+
+.page-section > footer {
+	margin: 0;
+	border: 0;
+}
+.page-section > #content{
+	padding: 0;
+}
+
+.fixed {
+    position:fixed;
+    top:0px;
+    left:50%;
+    margin-left:50px;
+}
+
+.static-width{
+	width:auto;
+}
+header .inner{
+	padding-top: 40px;
+}
+#myCarousel{
+	margin-bottom: 20px;
+}
+i {
+background-image: url('../images/glyphicons-halflings-sprite.png');
+}
+li#user{display:none;}
+li .mobile{display:none;}
+
+.hide{display:none !important;}
+
+/* Special grid styles
+-------------------------------------------------- */
+/* Special grid styles
+-------------------------------------------------- */
+.show-grid {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.show-grid [class*="span"] {
+  background-color: #eee;
+  text-align: center;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  min-height: 30px;
+  line-height: 30px;
+}
+.show-grid:hover [class*="span"] {
+  background: #ddd;
+}
+.show-grid .show-grid {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.show-grid .show-grid [class*="span"] {
+  background-color: #ccc;
+}
+
+.navbar .site.brand {
+	padding: 8px 2px 12px 20px;
+}
+
+@media (max-width: 768px){
+	.show-grid [class*="span"]{
+		margin-bottom: 5px;
+	}
+}
