@@ -234,6 +234,7 @@
             </div>
            
             	<div class="modal-body">
+           					<?php //Login form ;>?>
            					<form action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
 							<input type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" class="span3" />
 							<input type="password" name="pwd" id="pwd" class="span3"  />
