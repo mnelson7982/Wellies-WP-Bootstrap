@@ -4,7 +4,7 @@ Author: Eddie Machado
 URL: htp://themble.com/bones/
 
 This is where you can drop your custom functions or
-just edit things like thumbnail sizes, header images, 
+just edit things like thumbnail sizes, header images,
 sidebars, comments, ect.
 */
 
@@ -26,7 +26,7 @@ require_once('library/admin.php');         // custom admin functions
 function wellies_css_loader() {
 	wp_enqueue_style('bootstrap.css', get_template_directory_uri().'/library/css/bootstrap.min.css', false ,'1.0', 'all' );
 	wp_enqueue_style('themes.css', get_template_directory_uri().'/library/css/theme.css', false ,'1.0', 'all' );
-}    
+}
 add_action('wp_enqueue_scripts', 'wellies_css_loader');
 
 function wellies_js_loader() {
@@ -88,8 +88,8 @@ function wp_list_sites( $expires = 7200 ) {
 add_image_size( 'wpbs-featured', 580, 300, true );
 add_image_size( 'bones-thumb-600', 600, 150, false );
 add_image_size( 'bones-thumb-300', 300, 100, true );
-/* 
-to add more sizes, simply copy a line from above 
+/*
+to add more sizes, simply copy a line from above
 and change the dimensions & name. As long as you
 upload a "featured image" as large as the biggest
 set width or height, all the other sizes will be
@@ -98,7 +98,7 @@ auto-cropped.
 To call a different size, simply change the text
 inside the thumbnail function.
 
-For example, to call the 300 x 300 sized image, 
+For example, to call the 300 x 300 sized image,
 we would use the function:
 <?php the_post_thumbnail( 'bones-thumb-300' ); ?>
 for the 600 x 100 image:
@@ -121,15 +121,25 @@ function bones_register_sidebars() {
     	'before_title' => '<h4 class="widgettitle">',
     	'after_title' => '</h4>',
     ));
-    
-    /* 
+    register_sidebar(array(
+    	'id' => 'footer_widgets',
+    	'name' => 'Footer Widgets',
+    	'description' => 'Footer Widgets. (Max. 3)',
+    	'before_widget' => '<div class="span4">',
+    	'after_widget' => '</div>',
+    	'before_title' => '<h4 class="widgettitle">',
+    	'after_title' => '</h4>',
+    ));
+
+
+    /*
     to add more sidebars or widgetized areas, just copy
-    and edit the above sidebar code. In order to call 
+    and edit the above sidebar code. In order to call
     your new sidebar just use the following code:
-    
+
     Just change the name to whatever your new
     sidebar's id is, for example:
-    
+
     register_sidebar(array(
     	'id' => 'sidebar2',
     	'name' => 'Sidebar 2',
@@ -139,17 +149,17 @@ function bones_register_sidebars() {
     	'before_title' => '<h4 class="widgettitle">',
     	'after_title' => '</h4>',
     ));
-    
+
     To call the sidebar in your template, you can just copy
     the sidebar.php file and rename it to your sidebar's name.
     So using the above example, it would be:
     sidebar-sidebar2.php
-    
+
     */
 } // don't remove this bracket!
 
 /************* COMMENT LAYOUT *********************/
-		
+
 // Comment Layout
 function bones_comments($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>
@@ -162,17 +172,17 @@ function bones_comments($comment, $args, $depth) {
 				<div class="span8">
 					<?php printf(__('<h4 class="span8">%s</h4>'), get_comment_author_link()) ?>
 					<?php edit_comment_link(__('Edit'),'<span class="edit-comment btn small info">','</span>') ?>
-                    
+
                     <?php if ($comment->comment_approved == '0') : ?>
        					<div class="alert-message success">
           				<p><?php _e('Your comment is awaiting moderation.') ?></p>
           				</div>
 					<?php endif; ?>
-                    
+
                     <?php comment_text() ?>
-                    
+
                     <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time('F jS, Y'); ?> </a></time>
-                    
+
                     <!-- removing reply link on each comment since we're not nesting them -->
 					<?php //comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
                 </div>

@@ -2,7 +2,8 @@
 
 // shortcodes
 require_once ('shortcodes/scaffolding.php');
-//require_once ('shortcodes/javascript_plugins.php');
+require_once ('shortcodes/javascript_plugins.php');
+require_once ('shortcodes/base_css.php');
 
 
 // Gallery shortcode
@@ -14,7 +15,7 @@ add_shortcode('gallery', 'gallery_shortcode_tbs');
 function gallery_shortcode_tbs($attr) {
 	global $post, $wp_locale;
 
-	$args = array( 'post_type' => 'attachment', 'numberposts' => -1, 'post_status' => null, 'post_parent' => $post->ID ); 
+	$args = array( 'post_type' => 'attachment', 'numberposts' => -1, 'post_status' => null, 'post_parent' => $post->ID );
 	$attachments = get_posts($args);
 	if ($attachments) {
 		$output = '<ul class="media-grid">';
@@ -38,32 +39,32 @@ function buttons( $atts, $content = null ) {
 	'type' => 'default', /* primary, default, info, success, danger */
 	'size' => 'medium', /* small, medium, large */
 	'url'  => '',
-	'text' => '', 
+	'text' => '',
 	), $atts ) );
-	
+
 	$output = '<a href="' . $url . '" class="btn '. $type . ' ' . $size . '">';
 	$output .= $text;
 	$output .= '</a>';
-	
+
 	return $output;
 }
 
-add_shortcode('button', 'buttons'); 
+add_shortcode('button', 'buttons');
 
 // Alerts
 function alerts( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 	'type' => 'warning', /* warning, info, success, error */
 	'close' => 'false', /* display close link */
-	'text' => '', 
+	'text' => '',
 	), $atts ) );
-	
+
 	$output = '<div class="fade in alert-message '. $type . '">';
 	if($close == 'true') {
 		$output .= '<a class="close" href="#">×</a>';
 	}
 	$output .= '<p>' . $text . '</p></div>';
-	
+
 	return $output;
 }
 
@@ -74,20 +75,20 @@ function block_messages( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 	'type' => 'warning', /* warning, info, success, error */
 	'close' => 'false', /* display close link */
-	'text' => '', 
+	'text' => '',
 	), $atts ) );
-	
+
 	$output = '<div class="fade in alert-message block-message '. $type . '">';
 	if($close == 'true') {
 		$output .= '<a class="close" href="#">×</a>';
 	}
 	$output .= '<p>' . $text . '</p></div>';
-	
+
 	return $output;
 }
 
-add_shortcode('block-message', 'block_messages'); 
- 
+add_shortcode('block-message', 'block_messages');
+
 
 
 

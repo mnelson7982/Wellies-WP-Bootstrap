@@ -1,13 +1,13 @@
-.page-header {
-margin: 45px 0 18px;
+.section-header {
+margin: 0px 0 18px;
 border-bottom: 1px solid #eee;
 }
-.page-header h1 {
+.section-header h1 {
 margin-bottom: 17px;
 line-height: 1;
 }
 
-section{padding-top: 60px;}
+article{padding-top: 60px;}
 /***Top Navigation Bar Styling***/
 	/*Logged In State*/
 		a.logged-in {
@@ -20,7 +20,7 @@ section{padding-top: 60px;}
 			width: 16px;
 			height: 16px;
 			vertical-align:text-bottom;
-			
+
 		}
 		a.logged-in:hover{
 			background: #0069D6;
@@ -28,9 +28,12 @@ section{padding-top: 60px;}
 		a.logged-in + a.logged-in {
 			margin-right: .5em;
 		}
-		
-/***One Page Custom Template***/
 
+/***One Page Custom Template***/
+article:first-of-type{
+    margin-top:0;
+    padding-top: 0;
+}
 .page-section > footer {
 	margin: 0;
 	border: 0;
@@ -52,17 +55,22 @@ section{padding-top: 60px;}
 header .inner{
 	padding-top: 40px;
 }
-#myCarousel{
+div[rel=Carousel]{
 	margin-bottom: 20px;
 }
 i {
 background-image: url('../images/glyphicons-halflings-sprite.png');
 }
+
 li#user{display:none;}
-li .mobile{display:none;}
 
 .hide{display:none !important;}
 
+
+.masthead{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 /* Special grid styles
 -------------------------------------------------- */
 /* Special grid styles
@@ -94,6 +102,22 @@ li .mobile{display:none;}
 .navbar .site.brand {
 	padding: 8px 2px 12px 20px;
 }
+
+.edit_link{
+    display:block;
+    padding: .5em;
+    position:relative;
+    float:left;
+    left:-40px;
+    top: 5px;
+    margin-right:-40px;
+}
+
+ @media (max-width: 480px) {
+     .edit_link{
+	 display:none;
+     }
+ }
 
 @media (max-width: 768px){
 	.show-grid [class*="span"]{
